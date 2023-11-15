@@ -19,7 +19,7 @@ else
   for ref in $(git for-each-ref --sort=-creatordate --format '%(refname)' refs/tags); do
     tag="${ref#refs/tags/}"
     echo "tag=${tag}"
-    if echo "${tag}" | grep -E '^v([0-9]+)\.([0-9]+)\.([0-9]+)(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?(?:\+[0-9A-Za-z-]+)?$' 2>/dev/null; then
+    if echo "${tag}" | grep -E '^v([0-9]+)\.([0-9]+)\.([0-9]+)(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?(?:\+[0-9A-Za-z-]+)?' 2>/dev/null; then
       latest_tag="${tag}"
       echo "latest_tag=${latest_tag}"
       break
