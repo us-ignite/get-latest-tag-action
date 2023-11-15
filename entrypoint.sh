@@ -18,8 +18,10 @@ else
   # Get a latest tag in the shape of semver.
   for ref in $(git for-each-ref --sort=-creatordate --format '%(refname)' refs/tags); do
     tag="${ref#refs/tags/}"
+    echo "tag=${tag}"
     if echo "${tag}" | grep -E '^v([0-9]+)\.([0-9]+)\.([0-9]+)(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?(?:\+[0-9A-Za-z-]+)?$'; then
       latest_tag="${tag}"
+      echo "latest_tag=${latest_tag}"
       break
     fi
   done
