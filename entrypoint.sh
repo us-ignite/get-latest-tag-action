@@ -31,4 +31,4 @@ if [ "${latest_tag}" = '' ] && [ "${INPUT_WITH_INITIAL_VERSION}" = 'true' ]; the
   latest_tag="${INPUT_INITIAL_VERSION}"
 fi
 echo $latest_tag
-echo echo "tag=${latest_tag}" >> $GITHUB_OUTPUT
+echo "tag=${latest_tag}" >> $GITHUB_OUTPUT
