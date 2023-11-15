@@ -38,7 +38,7 @@ runs:
 
         latest_tag=''
 
-        if [ "${INPUT_SEMVER_ONLY}" = 'false' ]; then
+        if [ "${{inputs.semver_only}}" = 'false' ]; then
           # Get a actual latest tag.
           # If no tags found, supress an error. In such case stderr will be not stored in latest_tag variable so no additional logic is needed.
           latest_tag=$(git describe --abbrev=0 --tags || true)
@@ -53,8 +53,8 @@ runs:
           done
         fi
 
-        if [ "${latest_tag}" = '' ] && [ "${INPUT_WITH_INITIAL_VERSION}" = 'true' ]; then
-          latest_tag="${INPUT_INITIAL_VERSION}"
+        if [ "${latest_tag}" = '' ] && [ "${{inputs.with_initial_version}}" = 'true' ]; then
+          latest_tag="${{inputs.initial_version}}"
         fi
         echo $latest_tag
         echo "tag=${latest_tag}" >> $GITHUB_OUTPUT
